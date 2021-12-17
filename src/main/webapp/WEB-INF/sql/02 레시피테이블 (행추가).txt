@@ -1,0 +1,112 @@
+-- 회원 테이블 행추가
+insert into ts_member(m_code, m_class, m_mail, m_passwd, m_nick, m_gen, m_birth)
+    values ('m_code1' , 'A', 'qq1@gmail.com', '1234', '봄바람', '남', '1993-05-16');
+
+insert into ts_member(m_code, m_class, m_mail, m_passwd, m_nick, m_gen, m_birth)
+    values ((select CONCAT('m_code',(SELECT nvl(max(SUBSTR(m_code,7)),0)+1 from ts_member)) from ts_member where rownum=1) , 'A', 'qq2@gmail.com', '1234', '여름바람', '여', '1994-05-16');
+
+insert into ts_member(m_code, m_class, m_mail, m_passwd, m_nick, m_gen, m_birth)
+    values ((select CONCAT('m_code',(SELECT nvl(max(SUBSTR(m_code,7)),0)+1 from ts_member)) from ts_member where rownum=1) , 'A', 'qq3@gmail.com', '1234', '가을바람', '남', '1995-05-16');  
+
+insert into ts_member(m_code, m_class, m_mail, m_passwd, m_nick, m_gen, m_birth)
+    values ((select CONCAT('m_code',(SELECT nvl(max(SUBSTR(m_code,7)),0)+1 from ts_member)) from ts_member where rownum=1) , 'S', 'qq4@gmail.com', '1234', '겨울바람', '남', '1996-05-16');  
+
+insert into ts_member(m_code, m_class, m_mail, m_passwd, m_nick, m_gen, m_birth)
+    values ((select CONCAT('m_code',(SELECT nvl(max(SUBSTR(m_code,7)),0)+1 from ts_member)) from ts_member where rownum=1) , 'S', 'qq5@gmail.com', '1234', '봄바다', '여', '1997-05-16');     
+
+insert into ts_member(m_code, m_class, m_mail, m_passwd, m_nick, m_gen, m_birth)
+    values ((select CONCAT('m_code',(SELECT nvl(max(SUBSTR(m_code,7)),0)+1 from ts_member)) from ts_member where rownum=1) , 'F', 'qq6@gmail.com', '1234', '여름바다', '여', '1998-05-16');
+    
+insert into ts_member(m_code, m_class, m_mail, m_passwd, m_nick, m_gen, m_birth)
+    values ((select CONCAT('m_code',(SELECT nvl(max(SUBSTR(m_code,7)),0)+1 from ts_member)) from ts_member where rownum=1) , 'M', 'qq7@gmail.com', '1234', '가을바다', '남', '1999-05-16');
+
+-- 회원 테이블 행 조회    
+select * from ts_member
+delete from ts_member;
+
+
+-- 레시피 테이블 행추가
+insert into ts_recipe(r_code, r_name, r_intro, r_video, r_photo, r_tip, j_no, s_no, g_no, ci_per, ci_time, ci_diff, m_code)
+    values ('r_code1' , '황금볶음밥', '간단하고 맜있는 볶음밥', 'youtube', '요리.jpg', '밥과 계란을 넣고 잘볶는다', '밥/죽/떡', '볶음', '달걀/유제품', '1인분', '10분이내', '초급', 'm_code1');
+  
+insert into ts_recipe(r_code, r_name, r_intro, r_video, r_photo, r_tip, j_no, s_no, g_no, ci_per, ci_time, ci_diff, m_code)
+    values ((select CONCAT('r_code',(SELECT nvl(max(SUBSTR(r_code,7)),0)+1 from ts_recipe)) from ts_recipe where rownum=1) , '닭가슴살 그라탕', '다이어트 식단이 식상할 때', 'youtube', '요리.jpg', '오븐기 성능마다 차이 있음', '밥/죽/떡', '볶음', '닭고기', '1인분', '20분이내', '초급', 'm_code2');
+ 
+insert into ts_recipe(r_code, r_name, r_intro, r_video, r_photo, r_tip, j_no, s_no, g_no, ci_per, ci_time, ci_diff, m_code)
+    values ((select CONCAT('r_code',(SELECT nvl(max(SUBSTR(r_code,7)),0)+1 from ts_recipe)) from ts_recipe where rownum=1) , '차돌박이찜', '손님상차림으로도 좋은 차돌박이찜', '', '요리.jpg', '저는 깻잎이 커서 반으로 잘라서 사용!', '메인반찬', '찜', '소고기', '2인분', '15분이내', '중급', 'm_code3');
+  
+-- 레시피 테이블 조회  
+select * from ts_recipe;
+
+-- 재료 테이블 행추가
+insert into ts_mate(r_code, r_kind, r_tname, r_mea)
+    values ('r_code1', '재료', '계란', '2개');
+
+insert into ts_mate(r_code, r_kind, r_tname, r_mea)
+    values ('r_code2', '재료', '닭가슴살', '100g');
+
+insert into ts_mate(r_code, r_kind, r_tname, r_mea)
+    values ('r_code3', '양념', '마요네즈', '1숟갈');    
+
+-- 재료 테이블 조회    
+select * from ts_mate;
+
+-- 요리순서 테이블 행추가
+insert into ts_sequence(r_code, r_explan, r_img, r_seq)
+    values ('r_code1', '순서사진.jpg', '계란과 밥 양념을 넣고섞는다', '1');
+
+insert into ts_sequence(r_code, r_explan, r_img, r_seq)
+    values ('r_code2', '순서사진.jpg', '다진양파와 대파를 넣어주세요', '2');
+
+insert into ts_sequence(r_code, r_explan, r_img, r_seq)
+    values ('r_code3', '순서사진.jpg', '차돌박이를 올려 10분가 쪄주면 끝', '7');    
+
+-- 요리순서 테이블 조회
+select * from ts_sequence;
+
+-- 강의목록 테이블 행추가
+insert into ts_lecture(l_code, l_title, l_photo, m_code, l_contents, l_tumbsup)
+    values ('l_code1' , '스페어립바비큐', '대표사진.jpg', 'm_code4', '스페어립 바비큐 만들기', '영상.mp4');
+ 
+insert into ts_lecture(l_code, l_title, l_photo, m_code, l_contents, l_tumbsup)
+    values ((select CONCAT('l_code',(SELECT nvl(max(SUBSTR(l_code,7)),0)+1 from ts_lecture)) from ts_lecture where rownum=1) , '사과파이', '대표사진.jpg', 'm_code5', '바삭바삭한 사과파이만들기', '영상.mp4');
+
+-- 강의목록 테이블 조회 
+select * from ts_lecture;
+
+-- 결제 테이블 행추가
+insert into ts_pay(p_code, l_code, m_code, p_price, p_count, p_div)
+    values ('p_code1' , 'l_code1', 'm_code1', 9900, '1', 'Y');
+
+insert into ts_pay(p_code, l_code, m_code, p_price, p_count, p_div)
+    values ((select CONCAT('p_code',(SELECT nvl(max(SUBSTR(p_code,7)),0)+1 from ts_pay)) from ts_pay where rownum=1) , 'l_code2', 'm_code2', 19800, '2', 'N');
+    
+insert into ts_pay(p_code, l_code, m_code, p_price, p_count, p_div)
+    values ((select CONCAT('p_code',(SELECT nvl(max(SUBSTR(p_code,7)),0)+1 from ts_pay)) from ts_pay where rownum=1) , 'l_code2', 'm_code3', 49500, '5', 'Y');
+
+-- 결제 테이블 조회
+select * from ts_pay;
+
+-- 강의평 테이블 행추가
+insert into ts_coment(c_code, l_code, m_code, c_score, c_eval)
+    values ('c_code1' , 'l_code1', 'm_code1', '5', '애들이 잘먹어요!');
+
+insert into ts_coment(c_code, l_code, m_code, c_score, c_eval)
+    values ((select CONCAT('c_code',(SELECT nvl(max(SUBSTR(c_code,7)),0)+1 from ts_coment)) from ts_coment where rownum=1) , 'l_code2', 'm_code3', '3', '말이 빨라서 알아듣기 어렵네요');
+
+-- 강의평 테이블 조회
+select * from ts_coment;
+
+-- 후기 테이블 행추가
+insert into ts_postscript(r_code, h_code, m_code, h_star, h_postcon, h_photo, h_date)
+    values ('r_code1' , 'h_code1', 'm_code1', 5, '양념이 맛있네요!', '후기사진.jpg', sysdate);
+    
+insert into ts_postscript(r_code, h_code, m_code, h_star, h_postcon, h_photo, h_date)
+    values ('r_code2' , (select CONCAT('h_code',(SELECT nvl(max(SUBSTR(h_code,7)),0)+1 from ts_postscript)) from ts_postscript where rownum=1), 'm_code2', 3, '그저그래요', '후기사진.jpg', sysdate);
+    
+insert into ts_postscript(r_code, h_code, m_code, h_star, h_postcon, h_photo, h_date)
+    values ('r_code3' , (select CONCAT('h_code',(SELECT nvl(max(SUBSTR(h_code,7)),0)+1 from ts_postscript)) from ts_postscript where rownum=1), 'm_code3', 1, '제입맛엔 별로네요', '후기사진.jpg', sysdate);    
+
+-- 후기 테이블 조회
+select * from ts_postscript;
+
