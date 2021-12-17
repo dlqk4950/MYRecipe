@@ -1,0 +1,128 @@
+--회원 테이블 생성
+create table ts_member(
+m_code          varchar2(50)    not null,   --회원코드
+m_class         varchar2(50)    not null,   --회원등급 일반:A 쉐프:S 관리자:M 탈퇴:F
+m_mail          varchar2(50)    not null,   --이메일
+m_passwd        varchar2(20)    not null,   --비밀번호
+m_nick          varchar2(50)    not null,   --닉네임
+m_gen           varchar2(10)    not null,   --성별
+m_birth         date            not null,   --생년월일
+m_img           varchar2(50)         null,   --이미지
+primary key (m_code)
+);
+
+--회원 테이블 삭제
+drop table ts_member;
+
+--레시피 테이블 생성
+create table ts_recipe(
+r_code          varchar2(50)    not null,   --레시피코드
+r_name          varchar2(50)    not null,   --레시피제목
+r_intro         varchar2(100)   not null,   --요리소개
+r_video         varchar2(100)   null,       --동영상
+r_photo         varchar2(100)   not null,   --요리완성사진
+r_tip           varchar2(500)   not null,   --요리팁
+j_no            varchar2(20)    not null,   --종류별
+s_no            varchar2(20)    not null,   --방법별
+g_no            varchar2(20)    not null,   --재료별
+ci_per          varchar2(20)    not null,   --인원
+ci_time         varchar2(20)    not null,   --시간
+ci_diff         varchar2(20)    not null,   --난이도
+m_code          varchar2(50)    not null,   --회원코드
+constraint m_code foreign key(m_code)
+references ts_member(m_code),
+primary key (r_code)
+);
+
+--레시피 테이블 삭제
+drop table ts_recipe;
+
+--재료 테이블 생성
+create table ts_mate(
+r_code          varchar2(50)    not null,   --레시피코드
+r_kind          varchar2(20)    not null,   --타이틀
+r_tname         varchar2(50)    not null,   --재료이름
+r_mea           varchar2(20)    not null,   --재료용량
+constraint r_code foreign key(r_code)
+references ts_recipe(r_code)
+);
+
+--재료 테이블 삭제
+drop table ts_mate;
+
+--요리순서 테이블 생성
+create table ts_sequence(
+r_code          varchar2(50)    not null,   --레시피코드
+r_explan        varchar2(100)   not null,   --레시피설명
+r_img           varchar2(50)    not null,   --요리사진
+r_seq           number(10)      not null,   --요리순서
+foreign key(r_code) references ts_recipe(r_code)
+);
+
+--요리순서 테이블 삭제
+drop table ts_sequence;
+        
+--강의목록 테이블 생성
+create table ts_lecture(
+l_code          varchar2(50)    not null,   --강의코드
+l_title         varchar2(30)    not null,   --강의명
+l_photo         varchar2(20)    null,       --요리이미지
+m_code          varchar2(50)    not null,   --강사코드
+l_contents      varchar2(50)    not null,   --강의소개
+l_tumbsup       varchar2(20)    not null,   --강의영상
+l_views         number(20)      default 0 not null,   --조회수
+foreign key(m_code) references ts_member(m_code),
+primary key (l_code)
+);
+
+--강의목록 테이블 삭제
+drop table ts_lecture;
+
+--결제 테이블 생성
+create table ts_pay(
+p_code          varchar2(50)    not null,   --결제코드
+l_code          varchar2(50)    not null,   --강의코드
+m_code          varchar2(50)    not null,   --회원코드
+p_price         number(20)      not null,   --금액
+p_count         number(20)      not null,   --구독개월수(수량)
+p_div           varchar2(20)    not null,   --구분
+constraint l_code foreign key(l_code)
+references ts_lecture(l_code),
+foreign key(m_code) references ts_member(m_code),
+primary key (p_code)
+);
+
+--결제 테이블 삭제
+drop table ts_pay;
+
+--강의평 테이블 생성
+create table ts_coment(
+c_code	      varchar2(50)     not null,   --평가코드
+l_code	      varchar2(50)     not null,   --강의코드
+m_code	      varchar2(50)	   not null,   --회원코드
+c_score	      number(10)       not null,   --점수
+c_eval	      varchar2(50)	   not null,   --평가
+foreign key(l_code) references ts_lecture(l_code),
+foreign key(m_code) references ts_member(m_code),
+primary key (c_code)
+);
+
+--강의평 테이블 삭제
+drop table ts_coment;
+
+--후기 테이블 생성
+create table ts_postscript(
+r_code	      varchar2(50)     not null,   --레시피코드
+h_code    	  varchar2(50)     not null,   --후기번호
+m_code	      varchar2(50)	   not null,   --회원코드
+h_star	      number(10)       not null,   --별점
+h_postcon	  varchar2(200)	   not null,   --후기내용
+h_photo	      varchar2(50)	   null,       --후기사진
+h_date        date             not null,   --날짜
+foreign key(r_code) references ts_recipe(r_code),
+foreign key(m_code) references ts_member(m_code),
+primary key (h_code)
+);
+
+--후기 테이블 삭제
+drop table ts_postscript;
