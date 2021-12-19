@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>     
+    pageEncoding="UTF-8"%>    
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,7 +25,6 @@
         <!--[if lt IE 9]><script src="js/modernizr.custom.js"></script><![endif]-->
         <script src="js/jquery.flexslider-min.js"></script>
         <script src="js/functions.js"></script>
-        <script src="js/myscript.js"></script>
         
     </head>
     <body class="d-flex flex-column h-100">
@@ -30,18 +32,18 @@
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">
-                    <a class="navbar-brand" href="index.do">모두의 레시피</a>
+                    <a class="navbar-brand" href="home.do">모두의 레시피</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="index.do">추천</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.html">분류</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact.html">랭킹</a></li>
-                            <li class="nav-item"><a class="nav-link" href="pricing.html">클래스</a></li>
+                            <li class="nav-item"><a class="nav-link" href="class/classlist.do">클래스</a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">마이페이지</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="member/login.do">로그인/로그아웃</a></li>
+                               <li><a class="dropdown-item" href="member/login.do">로그인/로그아웃</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">레시피</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">요리후기</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">강의평</a></li>
@@ -76,37 +78,21 @@
         <div class="shell">
             <div class="slider-holder"> <span class="slider-shadow"></span>
               <div class="slider flexslider" style="overflow: hidden;">
-                <ul class="slides" style="transition-duration: 0s; width: 1000%; transform: translate3d(-900px, 0px, 0px);"><li class="clone" style="width: 900px; float: left; display: block;"> <img src="/images/R1.jpg" alt="">
+                <ul class="slides" style="transition-duration: 0s; width: 1000%; transform: translate3d(-900px, 0px, 0px);">
+                
+            	<c:forEach var="dto" items="${dto}">
+                <li class="clone" style="width: 900px; float: left; display: block;"> <img src="/storage/${dto.l_photo}" alt="">
                     <div class="slide-cnt">
-                      <h3>쿠킹스튜디오 [ 원더쿠킹 ]을 운영하고 있는 요리연구가 김현숙입니다.</h3>
-                      <p>칼질부터 재료의 특징을 알려주는 기초 요리 클래스부터 집에서 맛있게 만드는 일상 반찬 클래스, 다양한 세계 요리를 알려주는 세계요리 클래스 등 가르침의 즐거움과 수강생이 주는 행복감을 동시에 느끼며 다양한 요리 수업을 15년 동안 진행하고 있습니다. 
-                    </p>
-                      <a href="#" class="slider-btn">Explore More</a> </div>
+                      <h3>${dto.l_title}</h3>
+                      <p>${dto.l_contents}</p>
+                      <a href="class/read.do?l_code=${dto.l_code}" class="slider-btn">강의 듣기</a> </div>
                   </li>
-                  <li style="width: 900px; float: left; display: block;"> <img src="images/R2.jpg" alt="">
-                    <div class="slide-cnt">
-                      <h3>안녕하세요. 모두의레시피 빵선생입니다.</h3>
-                      <p>어려운 재료, 복잡한 과정 없이 충분히 근사한 디저트를 만들 수 있도록 기본에 충실한 내용들을 담았습니다.</p>
-                      <a href="#" class="slider-btn">Explore More</a> </div>
-                  </li>
-                  <li style="width: 900px; float: left; display: block;"> <img src="images/R3.jpg" alt="">
-                    <div class="slide-cnt">
-                      <h3>재료 준비, 요리 순서, 방법까지 잘 모르는 ‘요리 초보’를 위해 모두의레시피가 [요리 내비게이션]을 만들었습니다.</h3>
-                      <p>쉽게 따라할 수 있도록 요리 과정 전체를 영상에 담았습니다. 재료 손질부터 불조절까지 알려드리니 따라만 하세요!</p>
-                      <a href="#" class="slider-btn">Explore More</a> </div>
-                  </li>
-                  <li style="width: 900px; float: left; display: block;"> <img src="images/R4.jpg" alt="">
-                    <div class="slide-cnt">
-                      <h3>안녕하세요. 이송희 셰프입니다.</h3>
-                      <p>단품으로도 코스로도 활용가능한 10가지 이탈리아 요리를 배울 수 있어요.</p>
-                      <a href="#" class="slider-btn">Explore More</a> </div>
-                  </li>
-                <li class="clone" style="width: 900px; float: left; display: block;"> <img src="images/R5.jpg" alt="">
-                    <div class="slide-cnt">
-                      <h3>안녕하세요. 요리연구가 양정수입니다.</h3>
-                      <p>진미채볶음 반찬 비법을 배울 수 있어요. </p>
-                      <a href="#" class="slider-btn">Explore More</a> </div>
-                  </li></ul>
+                 </c:forEach>
+                
+          
+                  
+                  
+                  </ul>
               </div>
             <ul class="flex-direction-nav"><li><a class="prev" href="#">Previous</a></li><li><a class="next" href="#">Next</a></li></ul></div>
           </div>
@@ -145,6 +131,7 @@
                   </div>
                   <div class="col mb-5">
                      <a href="#!"><div class="text-center">
+                          <img class="img-fluid rounded-circle mb-4 px-4" src="images/k5.png" width="130px" height="130px" alt="..." />
                           <h5 class="fw-bolder">닉네임</h5>
                       </div></a>
                   </div>
