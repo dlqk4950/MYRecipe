@@ -38,16 +38,18 @@
                             <li class="nav-item"><a class="nav-link" href="../index.do">추천</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.html">분류</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact.html">랭킹</a></li>
-                            <li class="nav-item"><a class="nav-link" href="../class/classlist.do">클래스</a></li>
+                           <li class="nav-item"><a class="nav-link" href="class/classlist.do">클래스</a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">마이페이지</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="blog-home.html">로그인/로그아웃</a></li>
+                               <li><a class="dropdown-item" href="member/login.do">로그인/로그아웃</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">레시피</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">요리후기</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">강의평</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">클래스</a></li>
-                                    <li><a class="dropdown-item" href="blog-post.html">회원정보수정</a></li>
+                                    <li><a class="dropdown-item" href="member/modify.do?m_code=${s_m_code}">회원정보 수정</a></li>
+                                    <li><a class="dropdown-item" href="member/delete.do">회원탈퇴</a></li>
+                                </ul>
                                 </ul>
                             </li>
                         </ul>
