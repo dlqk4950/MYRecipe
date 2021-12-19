@@ -6,7 +6,7 @@ body {
     font-size: 20px;
     line-height: 20px;
     font-family: arial, sans-serif;
-    color: rgb(0, 0, 0);
+    color: #9c9c9c;
     background: url(images/body.png) repeat 0 0; 
     min-width: 920px;
 }
@@ -24,7 +24,7 @@ textarea { overflow: auto; }
 .left, .alignleft { float: left; display: inline; }
 .right, .alignright { float: right; display: inline; }
 
-h2 { font-size: 26px; line-height: 34px; color: #000; font-family: georgia, arial, helvetica, serif; font-style: italic; }
+h2 { font-size: 26px; line-height: 34px; color: #000; font-family: georgia, arial, helvetica, serif; font-style: italic; }		
 h3 { font-size: 22px; line-height: 32px; color: #747474; font-family: georgia, arial, helvetica, serif; font-weight: normal; font-style: italic; }
 h4 { font-size: 19px; line-height: 20px; color: #fff; font-family: georgia, arial, helvetica, serif; font-weight: normal; }
 .shell { width: 920px; margin: 0 auto; }
@@ -46,7 +46,7 @@ header .shell { position: relative; }
 .slider-holder { background: url(images/slider-holder.png) repeat 0 0; border-top: 1px solid #568993; width: 900px; height: 380px; padding: 9px; position: relative; bottom: -30px; }
 .slider-holder span.slider-shadow { background: url(images/slider-shadow.png) no-repeat 0 0; width: 920px; height: 37px; position: absolute; bottom: -37px; left: 0; font-size: 0; line-height: 0; text-indent: -4000px; }
 
-.flexslider { width: 900px; height: 380px; overflow: hidden}
+.flexslider { width: 900px; height: 380px; overflow: hidden; }
 .flexslider ul.slides { list-style: none; list-style-position: outside; position: relative; }
 .flexslider ul.slides li { width: 900px; height: 380px; float: left; position: relative; }
 .flexslider ul.slides li img { width: 500px; height: 380px; }
@@ -55,13 +55,13 @@ header .shell { position: relative; }
 .flexslider ul.slides li .slide-cnt p { color: #39daf5; font-size: 14px; line-height: 22px; padding-bottom: 16px; }
 .flexslider ul.slides li .slide-cnt a.slider-btn { width: 115px; height: 33px; line-height: 33px; text-align: center; padding: 0 44px 0 22px; font-size: 17px; color: #0d0d0d; display: block; font-weight: bold; 
 text-shadow: rgba(255,255,255,0.4) 1px 1px 2px; background: url(images/slider-btn.png) no-repeat 0 0; }
-.flexslider ul.slides li .slide-cnt a.slider-btn:hover { color: rgb(92, 92, 92); text-decoration: none; text-shadow: rgba(0,0,0,0.4) 1px 1px 2px; }
+.flexslider ul.slides li .slide-cnt a.slider-btn:hover { color: #fff; text-decoration: none; text-shadow: rgba(0,0,0,0.4) 1px 1px 2px; }
 /* end of slider */
 
 .main { padding-top: 68px; padding-bottom: 40px; }
 /* heading */
 .heading { position: relative; padding-left: 135px; padding-top: 39px; padding-bottom: 51px; }
-.heading span.ico { width: 108px; height: 136px; background: url(../images/ico.png) no-repeat 0 0; position: absolute; left: 10px; top: 0; }
+.heading span.ico { width: 108px; height: 136px; background: url(images/ico.png) no-repeat 0 0; position: absolute; left: 10px; top: 0; }
 .heading h3 { padding-bottom: 16px; }
 /* end heading */
 

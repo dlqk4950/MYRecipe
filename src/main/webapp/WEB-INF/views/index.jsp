@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>     
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,6 +22,7 @@
         <!--[if lt IE 9]><script src="js/modernizr.custom.js"></script><![endif]-->
         <script src="js/jquery.flexslider-min.js"></script>
         <script src="js/functions.js"></script>
+        <script src="js/myscript.js"></script>
         
     </head>
     <body class="d-flex flex-column h-100">
@@ -29,23 +30,24 @@
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">
-                    <a class="navbar-brand" href="home.do">모두의 레시피</a>
+                    <a class="navbar-brand" href="index.do">모두의 레시피</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="index.do">추천</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.html">분류</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact.html">랭킹</a></li>
-                            <li class="nav-item"><a class="nav-link" href="class/classlist.do">클래스</a></li>
+                            <li class="nav-item"><a class="nav-link" href="pricing.html">클래스</a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">마이페이지</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="blog-home.html">로그인/로그아웃</a></li>
+                                    <li><a class="dropdown-item" href="member/login.do">로그인/로그아웃</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">레시피</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">요리후기</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">강의평</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">클래스</a></li>
-                                    <li><a class="dropdown-item" href="blog-post.html">회원정보수정</a></li>
+                                    <li><a class="dropdown-item" href="member/modify.do?m_code=${s_m_code}">회원정보 수정</a></li>
+                                    <li><a class="dropdown-item" href="member/delete.do">회원탈퇴</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -143,7 +145,6 @@
                   </div>
                   <div class="col mb-5">
                      <a href="#!"><div class="text-center">
-                          <img class="img-fluid rounded-circle mb-4 px-4" src="images/k5.png" width="130px" height="130px" alt="..." />
                           <h5 class="fw-bolder">닉네임</h5>
                       </div></a>
                   </div>

@@ -53,7 +53,7 @@
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 255, 255, 255;
-  --bs-font-sans-serif: system-ui, -apple-m, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
@@ -694,7 +694,7 @@ progress {
 
 .row-cols-1 > * {
   flex: 0 0 auto;
-  width: 200px;
+  width: 100%;
 }
 
 .row-cols-2 > * {
@@ -908,7 +908,7 @@ progress {
 
   .row-cols-sm-2 > * {
     flex: 0 0 auto;
-    width: 200px;
+    width: 50%;
   }
 
   .row-cols-sm-3 > * {
@@ -1567,7 +1567,7 @@ progress {
 
   .row-cols-xl-6 > * {
     flex: 0 0 auto;
-    width: 200px;
+    width: 16.6666666667%;
   }
 
   .col-xl-auto {
@@ -4605,10 +4605,9 @@ textarea.form-control-lg {
 }
 
 .card-img,
-.g-top,
+.card-img-top,
 .card-img-bottom {
-  width: 300px;
-  height: auto;
+  width: 100%;
 }
 
 .card-img,

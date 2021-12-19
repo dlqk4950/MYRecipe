@@ -1,4 +1,3 @@
-
 package net.utility;
 
 import java.awt.Image;
