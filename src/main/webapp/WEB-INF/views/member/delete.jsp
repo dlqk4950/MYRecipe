@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
+
 <!-- 본문시작 template.jsp -->
 <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
         <div class="text-center mb-5">
@@ -17,7 +18,7 @@
 	                        <label for="password">비밀번호</label>
 	                        <br>
 	                        <input type="submit" value="회원탈퇴"  class="btn btn-outline-danger"/>
-			        		<input type="reset"  value="취소"     class="btn btn-outline-warning"/>
+			        		<input type="Javascript:history back"  value="취소"     class="btn btn-outline-warning"/>
 	                	</div>
 	                </form>
 

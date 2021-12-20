@@ -1,18 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <%@ include file="../header.jsp"%>
-
+<%@ include file="../member/auth.jsp" %>
 <!--본문시작 -->
-
-
-
-
 <div class="container px-4 px-lg-5 mt-5">
-	<h1>클래스   <a class="btn btn-outline-success" href="create.do">강의 작성</a></h1>	
-	<div
-		class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+	<h1>클래스   <a class="btn btn-outline-success" href="javascript:logincheck();">강의 작성</a></h1>	
+	<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
 		<c:choose>
 			<c:when test="${empty list}">
@@ -57,5 +51,16 @@
 
 	</div>
 </div>
+<script>
+
+function logincheck() {
+	 if (${sessionScope.s_m_mail==guest}) {            
+		 alert("로그인을 해주세요!");	        
+	    } else {	    	
+	    	location.href="create.do";	    	
+	    }
+}
+</script>
+
 <!--본문 끝 -->
 <%@ include file="../footer.jsp"%>

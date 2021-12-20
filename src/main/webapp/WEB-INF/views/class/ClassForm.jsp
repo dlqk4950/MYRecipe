@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+	<%@ include file="../member/auth.jsp" %>
 <%@ include file="../header.jsp"%>
 <!--본문시작 -->
 <h3>강의 등록</h3>
@@ -9,7 +9,7 @@
 </p>
 
 <form name="classfrm" method="post" action="create.do" enctype="multipart/form-data" onsubmit="return classCheck()">
-	<input type="hidden" name="m_code" value="${m_code}">
+	<input type="hidden" name="m_code" value="${s_m_code}">
 	<table class="table table-hover">
 		<tr>
 			<th class="success">강의명</th>

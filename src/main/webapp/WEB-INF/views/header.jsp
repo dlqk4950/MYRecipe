@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,13 +19,13 @@
         <!-- -->        
         <link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
         <link rel="stylesheet" href="../css/flexslider.css" type="text/css" media="all">
-        <script src="js/jquery-1.7.2.min.js"></script>
+        <script src="../js/jquery-1.7.2.min.js"></script>
         
         <!--[if lt IE 9]><script src="js/modernizr.custom.js"></script><![endif]-->
         <script src="../js/jquery.flexslider-min.js"></script>
         <script src="../js/functions.js"></script>
         <script src="../js/myscript.js"></script>
-        
+        <script src="..js/scripts.js"></script>
         
  
                 
@@ -46,9 +50,8 @@
                                     <li><a class="dropdown-item" href="blog-post.html">레시피</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">요리후기</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">강의평</a></li>
-                                    <li><a class="dropdown-item" href="blog-post.html">클래스</a></li>
-                                    <li><a class="dropdown-item" href="../member/modify.do?m_code=${s_m_code}">회원정보 수정</a></li>
-                                    <li><a class="dropdown-item" href="../member/delete.do">회원탈퇴</a></li>
+                                    <li><a class="dropdown-item" href="blog-post.html">클래스</a></li>                                    
+                                    <li><a class="dropdown-item" href="subscibe.do">구독 목록</a></li>
                                 </ul>
                                 </ul>
                             </li>

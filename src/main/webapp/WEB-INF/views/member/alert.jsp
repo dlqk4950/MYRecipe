@@ -10,7 +10,7 @@
 		var message = "${msg}";
 		var url = "?m_code=${s_m_code}"; //만일 로그인 실패했을 경우 m_code변수에 어떤 값이 들어가면 되나요?
 		alert(message);		           //guest값을 넣고싶습니다
-		document.location.href = url;		
+		document.location.href = 'login.do'+url;		
 	</script>
 </body>
 </html>

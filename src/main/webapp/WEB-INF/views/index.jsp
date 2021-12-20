@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>    
-    
+    <%@ include file="member/auth.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
@@ -48,8 +48,7 @@
                                     <li><a class="dropdown-item" href="blog-post.html">요리후기</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">강의평</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">클래스</a></li>
-                                    <li><a class="dropdown-item" href="member/modify.do?m_code=${s_m_code}">회원정보 수정</a></li>
-                                    <li><a class="dropdown-item" href="member/delete.do">회원탈퇴</a></li>
+                                    <li><a class="dropdown-item" href="subscibe.do">구독 목록</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -80,12 +79,12 @@
               <div class="slider flexslider" style="overflow: hidden;">
                 <ul class="slides" style="transition-duration: 0s; width: 1000%; transform: translate3d(-900px, 0px, 0px);">
                 
-            	<c:forEach var="dto" items="${dto}">
-                <li class="clone" style="width: 900px; float: left; display: block;"> <img src="/storage/${dto.l_photo}" alt="">
+            	<c:forEach var="cdto" items="${cdto}">
+               	 <li class="clone" style="width: 900px; float: left; display: block;"> <img src="/storage/${cdto.l_photo}" alt="">
                     <div class="slide-cnt">
-                      <h3>${dto.l_title}</h3>
-                      <p>${dto.l_contents}</p>
-                      <a href="class/read.do?l_code=${dto.l_code}" class="slider-btn">강의 듣기</a> </div>
+                      <h3>${cdto.l_title}</h3>
+                      <p>${cdto.l_contents}</p>
+                      <a href="class/read.do?l_code=${cdto.l_code}" class="slider-btn">강의 듣기</a> </div>
                   </li>
                  </c:forEach>
                 
@@ -105,36 +104,15 @@
               <h2 class="fw-bolder fs-5 mb-4">쉐프소개    <a href="#" class="btn btn-outline-success">More Chef</a>                 
                    </h2>
               <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-6 justify-content-center">
-                  <a href="#!"><div class="col mb-5 mb-5 mb-xl-0">
-                      <div class="text-center">
-                          <img class="img-fluid rounded-circle mb-4 px-4" src="images/k5.png" width="130px" height="130px" alt="..." />
-                          <h5 class="fw-bolder">닉네임</h5>
-                      </div>
-                  </div></a>
-                  <div class="col mb-5 mb-5 mb-xl-0">
+                  
+                  <c:forEach var="mdto" items="${mdto}">    
+                      <div class="col mb-5 mb-5 mb-xl-0">
                      <a href="#!"><div class="text-center">
-                          <img class="img-fluid rounded-circle mb-4 px-4" src="images/k5.png" width="130px" height="130px" alt="..." />
-                          <h5 class="fw-bolder">닉네임</h5>
+                          <img class="img-fluid rounded-circle mb-4 px-4" src="storage/${mdto.m_img}" width="130px" height="130px" alt="..." />
+                          <h5 class="fw-bolder">${mdto.m_nick}</h5>
                       </div></a>
                   </div>
-                  <div class="col mb-5 mb-5 mb-sm-0">
-                     <a href="#!"><div class="text-center">
-                          <img class="img-fluid rounded-circle mb-4 px-4" src="images/k5.png" width="130px" height="130px" alt="..." />
-                          <h5 class="fw-bolder">닉네임</h5>
-                      </div></a>
-                  </div>
-                  <div class="col mb-5">
-                     <a href="#!"><div class="text-center">
-                          <img class="img-fluid rounded-circle mb-4 px-4" src="images/k5.png" width="130px" height="130px" alt="..." />
-                          <h5 class="fw-bolder">닉네임</h5>
-                      </div></a>
-                  </div>
-                  <div class="col mb-5">
-                     <a href="#!"><div class="text-center">
-                          <img class="img-fluid rounded-circle mb-4 px-4" src="images/k5.png" width="130px" height="130px" alt="..." />
-                          <h5 class="fw-bolder">닉네임</h5>
-                      </div></a>
-                  </div>
+                  </c:forEach>
               </div>
         </div>
         

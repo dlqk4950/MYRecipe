@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import kr.co.recipe.rclass.ClassDTO;
 import net.utility.DBClose;
 import net.utility.DBOpen;
 
@@ -185,5 +186,34 @@ public class MemberDAO {
         }//end
         return cnt;
     }//modifyProc() end 
-	
+	public ArrayList<MemberDTO> list() {
+		ArrayList<MemberDTO> list = null;
+		try {
+			con = dbopen.getConnection();
+
+			sql = new StringBuilder();
+			sql.append("select m_code, m_mail, m_nick, m_gen, m_birth, m_img  FROM ts_member");
+
+			pstmt = con.prepareStatement(sql.toString());
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				list = new ArrayList<MemberDTO>();
+				do {
+					MemberDTO dto = new MemberDTO();
+					dto.setM_code(rs.getString("m_code"));
+					dto.setM_mail(rs.getString("m_mail"));
+					dto.setM_nick(rs.getString("m_nick"));
+					dto.setM_gen(rs.getString("m_gen"));
+					dto.setM_birth(rs.getString("m_birth"));
+					dto.setM_img(rs.getString("m_img"));
+					list.add(dto);
+				} while (rs.next());
+			}
+		} catch (Exception e) {
+			System.out.println("member 목록 실패" + e);
+		} finally {
+			DBClose.close(con, pstmt, rs);
+		}
+		return list;
+	}
 }//class end

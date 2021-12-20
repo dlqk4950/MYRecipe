@@ -107,26 +107,30 @@ public class MemberCont {
 		
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("member/alert");
-		
 		String basePath=req.getRealPath("/storage");
+		if (dto.getM_imgmf().getSize() == 0) {
+			dto.setM_img("imgnull.png");
+		} else {					
+			MultipartFile m_imgmf=dto.getM_imgmf();
+			String M_img=UploadSaveManager.saveFileSpring30(m_imgmf, basePath);
+			dto.setM_img(M_img);
+			
+		}
 		
-		MultipartFile m_imgmf=dto.getM_imgmf();
-		String M_img=UploadSaveManager.saveFileSpring30(m_imgmf, basePath);
-		dto.setM_img(M_img);
 		
 		String m_mail=req.getParameter("m_mail");
 		String m_passwd=req.getParameter("m_passwd");
 		String m_nick=req.getParameter("m_nick");
 		String m_gen=req.getParameter("m_gen");
 		String m_birth=req.getParameter("m_birth");
-		String m_img=req.getParameter("m_img");
+		
 
 		dto.setM_mail(m_mail);
 		dto.setM_passwd(m_passwd);
 		dto.setM_nick(m_nick);
 		dto.setM_gen(m_gen);
 		dto.setM_birth(m_birth);
-		dto.setM_img(m_img);
+		
 		
 		int cnt=dao.insert(dto);
 		if(cnt!=0) {
@@ -142,9 +146,8 @@ public class MemberCont {
 	public void duplecatem_mail(@ModelAttribute MemberDTO dto, HttpServletRequest req, HttpServletResponse resp) {
 		try {
 
-			String m_mail=req.getParameter("m_mail");
-			int cnt=dao.duplecateemail(dto);
 			
+			int cnt=dao.duplecateemail(dto);			
 			JSONObject json=new JSONObject();
 			json.put("count", cnt);
 			
