@@ -7,6 +7,7 @@ m_passwd        varchar2(20)    not null,   --비밀번호
 m_nick          varchar2(50)    not null,   --닉네임
 m_gen           varchar2(10)    not null,   --성별
 m_birth         date            not null,   --생년월일
+m_img			varchar2(100)	null		--회원이미지
 primary key (m_code)
 );
 
@@ -64,13 +65,13 @@ drop table ts_sequence;
 --강의목록 테이블 생성
 create table ts_lecture(
 l_code          varchar2(50)    not null,   --강의코드
-l_title         varchar2(30)    not null,   --강의명
-l_photo         varchar2(20)    null,       --요리이미지
-m_code          varchar2(50)    not null,   --강사코드
-l_contents      varchar2(50)    not null,   --강의소개
-l_tumbsup       varchar2(20)    not null,   --강의영상
+l_title         varchar2(100)    not null,   --강의명
+l_photo         varchar2(500)    null,       --요리이미지
+g_code          varchar2(50)    not null,   --강사코드
+l_contents      varchar2(1000)    not null,   --강의소개
+l_tumbsup       varchar2(500)    not null,   --강의영상
 l_views         number(20)      default 0 not null,   --조회수
-foreign key(m_code) references ts_member(m_code),
+foreign key(g_code) references ts_member(m_code),
 primary key (l_code)
 );
 
@@ -80,13 +81,13 @@ drop table ts_lecture;
 --결제 테이블 생성
 create table ts_pay(
 p_code          varchar2(50)    not null,   --결제코드
-l_code          varchar2(50)    not null,   --강의코드
+g_code          varchar2(50)    not null,   --강사코드
 m_code          varchar2(50)    not null,   --회원코드
 p_price         number(20)      not null,   --금액
-p_count         number(20)      not null,   --구독개월수(수량)
+p_count         number(20)      not null,   --지금까지구독한개월수
 p_div           varchar2(20)    not null,   --구분
-constraint l_code foreign key(l_code)
-references ts_lecture(l_code),
+p_date          date  null,      --구독 종료날짜
+foreign key(g_code) references ts_member(m_code),
 foreign key(m_code) references ts_member(m_code),
 primary key (p_code)
 );
