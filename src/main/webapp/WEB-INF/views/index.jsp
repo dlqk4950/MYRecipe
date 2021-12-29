@@ -3,6 +3,7 @@
     <%@ include file="member/auth.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,13 +32,13 @@
         <main class="flex-shrink-0">
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container px-5">
+                <div class="container px-12">
                     <a class="navbar-brand" href="home.do">모두의 레시피</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="index.do">추천</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.html">분류</a></li>
+                            <li class="nav-item"><a class="nav-link" href="recipe/recipelist.do">분류</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact.html">랭킹</a></li>
                             <li class="nav-item"><a class="nav-link" href="class/classlist.do">클래스</a></li>
                             <li class="nav-item dropdown">
@@ -48,7 +49,7 @@
                                     <li><a class="dropdown-item" href="blog-post.html">요리후기</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">강의평</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">클래스</a></li>
-                                    <li><a class="dropdown-item" href="subscibe.do">구독 목록</a></li>
+                                    <li><a class="dropdown-item" href="class/subscribe.do?m_code=${s_m_code}">구독 목록</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -84,7 +85,7 @@
                     <div class="slide-cnt">
                       <h3>${cdto.l_title}</h3>
                       <p>${cdto.l_contents}</p>
-                      <a href="class/read.do?l_code=${cdto.l_code}" class="slider-btn">강의 듣기</a> </div>
+                      <a href="class/classread.do?l_code=${cdto.l_code}" class="btn btn-outline-success">강의 듣기</a> </div>
                   </li>
                  </c:forEach>
                 
@@ -120,7 +121,7 @@
         <div class="container px-5">
             <h2 class="fw-bolder fs-5 mb-4">소고기 레시피 베스트    <a href="#" class="btn btn-outline-success">More Recipe</a></h2>
             <div class="row gx-5">
-                <div class="col-lg-4 mb-5">
+                <div class="col-lg-3 mb-2">
                     <div class="card h-100 shadow border-0">
                         <img src="images/recipe.jpg" alt="" />
                         <div class="card-body p-4">
@@ -140,7 +141,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 mb-5">
+                <div class="col-lg-3 mb-2">
                     <div class="card h-100 shadow border-0">
                         <img class="card-img-top" src="images/R1.jpg" alt="..." />
                         <div class="card-body p-4">
@@ -160,7 +161,27 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 mb-5">
+                <div class="col-lg-3 mb-2">
+                    <div class="card h-100 shadow border-0">
+                        <img class="card-img-top" src="images/R2.jpg" alt="..." />
+                        <div class="card-body p-4">
+                            <a class="text-decoration-none link-dark stretched-link" href="#!"><div class="h5 card-title mb-3">레시피명</div></a>
+                        </div>
+                        <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                            <div class="d-flex align-items-end justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle me-3" src="images/k6.png" width="40px" height="40px" alt="..." />
+                                    <div class="small">
+                                        <div class="fw-bold">닉네임</div> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="badge bg-primary bg-gradient rounded-pill mb-2">조회수</div>
+                            <p class="card-text mb-0">별점</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-2">
                     <div class="card h-100 shadow border-0">
                         <img class="card-img-top" src="images/R2.jpg" alt="..." />
                         <div class="card-body p-4">

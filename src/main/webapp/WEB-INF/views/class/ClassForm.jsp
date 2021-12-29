@@ -19,7 +19,7 @@
 		
 		<tr>
 			<th class="success">강의소개</th>
-			<td style="text-align: left"><textarea rows="5"  name="l_contents" id="l_contents"></textarea></td>
+			<td style="text-align: left"><textarea rows="5"  name="l_contents" id="l_contents" style="width: 50%"></textarea></td>
 		</tr>
 		<tr>
 			<th class="success">요리이미지</th>

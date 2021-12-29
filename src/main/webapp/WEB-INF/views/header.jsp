@@ -19,7 +19,9 @@
         <!-- -->        
         <link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
         <link rel="stylesheet" href="../css/flexslider.css" type="text/css" media="all">
-        <script src="../js/jquery-1.7.2.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+		<script src="../js/jquery-1.7.2.min.js"></script>
+        <script src="../js/jquery.cookie.js "></script>
         
         <!--[if lt IE 9]><script src="js/modernizr.custom.js"></script><![endif]-->
         <script src="../js/jquery.flexslider-min.js"></script>
@@ -40,7 +42,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="../index.do">추천</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.html">분류</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../recipe/recipelist.do">분류</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact.html">랭킹</a></li>
                            <li class="nav-item"><a class="nav-link" href="../class/classlist.do">클래스</a></li>
                             <li class="nav-item dropdown">
@@ -51,7 +53,7 @@
                                     <li><a class="dropdown-item" href="blog-post.html">요리후기</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">강의평</a></li>
                                     <li><a class="dropdown-item" href="blog-post.html">클래스</a></li>                                    
-                                    <li><a class="dropdown-item" href="subscibe.do">구독 목록</a></li>
+                                    <li><a class="dropdown-item" href="/class/subscribe.do?m_code=${s_m_code}">구독 목록</a></li>
                                 </ul>
                                 </ul>
                             </li>
@@ -60,7 +62,7 @@
                 </div>
             </nav>
             <!-- Header-->
-            <header class="bg-dark py-0">
+            <header class="bg-dark py-10">
                 <div class="container px-5">
                     <div class="row gx-0 align-items-center justify-content-center">
                         <div class="col-lg-8 col-xl-7 col-xxl-6">

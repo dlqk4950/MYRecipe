@@ -25,16 +25,25 @@
                         </div>
                                                 
                     </div>
+                <c:if test="${s_m_code==dto.g_code}">   
                 <div class="col-lg-6"><br><br>
                 	<a class="btn btn-outline-success" href="update.do?l_code=${dto.l_code}">수정</a>         			
          			<a class="btn btn-outline-success" href="javascript:deleteCheck()">삭제</a>         			
                 </div>                    
-
+				</c:if>
+				<c:if test="${s_m_code!=dto.g_code}">   
+                <div class="col-lg-6"><br><br>
+                	<a class="btn btn-outline-success" href="subscribepay.do?g_code=${dto.g_code}">구독하기</a>
+                </div>                    
+				</c:if>
+				
                 
             </section>
-            
-            <!-- About section two-->
             <section class="py-5">
+            <c:choose>
+					<c:when test="${!empty cdto or s_m_code==dto.g_code}">            
+            <!-- About section two-->
+            
                 <div class="container px-5 my-5">
                     <div class="row gx-5 align-items-center">
                         <div class="col-lg-6 order-first order-lg-last">
@@ -44,8 +53,14 @@
                         </div>
                     </div>
                 </div>
-            </section>
+               </div>
          
+         </c:when>
+         <c:when test="${empty cdto}">
+         		<h5>구독시 영상을 볼수있습니다</h5>
+         </c:when>
+         </c:choose>
+      </section>
 <script>
 function deleteCheck(){	  
     if (confirm("사진,영상도 삭제됩니다. 계속 하시겠습니까?")) {            

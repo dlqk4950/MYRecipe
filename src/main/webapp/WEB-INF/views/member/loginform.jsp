@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
-<%@ include file="auth.jsp" %>
 <!-- 본문시작 loginform.jsp -->
 <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
 	
@@ -32,7 +31,7 @@
 		                <div class="form-floating mb-3">
 		                    <input class="form-control" id="m_mail" name="m_mail" value="<%=c_m_mail%>" type="email" placeholder="이메일" />
 		                    <label for="email">이메일</label>
-		                </div>  
+		                </div> 
 		                <div class="form-floating mb-3">
 		                    <input class="form-control" id="m_passwd" name="m_passwd" type="password" placeholder="비밀번호" />
 		                    <label for="password">비밀번호</label>
@@ -51,6 +50,7 @@
 				<c:when test="${sessionScope.s_m_mail!=guest && sessionScope.s_m_passwd!=guest && sessionScope.s_m_class!=guest && sessionScope.s_m_code!=guest}">
 						<div>
 							${sessionScope.s_m_mail}
+							
 						</div>
 						<br><br>	
 						<a href='read.do?m_code=${s_m_code}' class="btn btn-outline-success">회원정보</a>

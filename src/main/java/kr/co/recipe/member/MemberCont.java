@@ -65,6 +65,8 @@ public class MemberCont {
 				session.setAttribute("s_m_passwd", m_passwd);
 				session.setAttribute("s_m_class", dto.getM_class());
 				session.setAttribute("s_m_code", dto.getM_code());
+				session.setAttribute("s_m_nick", dto.getM_nick());
+				session.setAttribute("s_m_img", dto.getM_img());
 				
 				model.addAttribute("msg", "로그인 되었습니다.");
 				String c_m_mail=Utility.checkNull(req.getParameter("c_m_mail"));
@@ -142,6 +144,8 @@ public class MemberCont {
 		return mav;
 	}//memberProc() end
 //--------------------------------------------------------------------------------------	
+	
+	//AJAX m_mail 중복확인	
 	@RequestMapping("member/duplecatem_mail.do")
 	public void duplecatem_mail(@ModelAttribute MemberDTO dto, HttpServletRequest req, HttpServletResponse resp) {
 		try {
@@ -161,6 +165,31 @@ public class MemberCont {
 			System.out.println("email 중복확인 쿠키 실패:" + e);
 		}//end
 	}//duplecatem_mail() end
+	
+	
+	//AJAX m_nick 중복확인	
+	@RequestMapping("member/duplecatem_nick.do")
+	public void duplecatem_nick(@ModelAttribute MemberDTO dto, HttpServletRequest req, HttpServletResponse resp) {
+		try {
+
+			
+			int cnt=dao.duplecatenick(dto);			
+			JSONObject json=new JSONObject();
+			
+			json.put("count", cnt);
+			
+			resp.setContentType("text/plain; charset=UTF-8");
+			PrintWriter out=resp.getWriter();
+			out.print(json.toString());
+			out.flush();
+			
+
+		}catch(Exception e) {
+			System.out.println("닉네임 중복확인 쿠키 실패:" + e);
+		}//end
+	}//duplecatem_nick() end
+
+//-------------------------------------------------------------------------------------
 	
 	@RequestMapping(value="member/read.do")
 	public ModelAndView read(String m_code) {
@@ -247,7 +276,6 @@ public class MemberCont {
 		}else {			
 			 dto.setM_img(oldDTO.getM_img());
 		}//if end
-	System.out.println(dto.getM_img());
 		int cnt=dao.modifyProc(dto); 
 		if(cnt!=0) {
 			model.addAttribute("msg", "회원정보 수정 되었습니다.");			

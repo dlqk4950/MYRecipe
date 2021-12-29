@@ -18,7 +18,7 @@
 	                        <label for="password">비밀번호</label>
 	                        <br>
 	                        <input type="submit" value="회원탈퇴"  class="btn btn-outline-danger"/>
-			        		<input type="Javascript:history back"  value="취소"     class="btn btn-outline-warning"/>
+			        		<input type="reset"  value="취소"     class="btn btn-outline-warning"/>
 	                	</div>
 	                </form>
 

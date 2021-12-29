@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import kr.co.recipe.rclass.ClassDTO;
 import net.utility.DBClose;
 import net.utility.DBOpen;
 
@@ -105,6 +104,33 @@ public class MemberDAO {
         return cnt;
 		
 	}//duplecateemail() end
+	
+	public int duplecatenick(MemberDTO dto) {
+		int cnt=0;
+		try {
+			 con=dbopen.getConnection();
+            
+            sql=new StringBuilder();
+            sql.append(" SELECT COUNT(*) as cnt ");
+            sql.append(" FROM ts_member ");
+            sql.append(" WHERE m_nick=? ");
+            
+            pstmt=con.prepareStatement(sql.toString());
+			pstmt.setString(1, dto.getM_nick());
+            
+            rs= pstmt.executeQuery();
+            if(rs.next()) {
+            	cnt=rs.getInt("cnt");
+            }//if end	
+            
+        }catch (Exception e) {
+            System.out.println("닉네임 중복확인 실패:" + e);
+        }finally {
+            DBClose.close(con, pstmt,rs);
+        }//end
+        return cnt;
+		
+	}//duplecatenick() end
 		
 	public MemberDTO read(String m_code) {
 		MemberDTO dto = null;

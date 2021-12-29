@@ -45,22 +45,51 @@ function memberCheck(){ //ㅣ회원가입 유효성 검사
 		if(m_birth.length<1){
 			alert("생년월일 선택해 주세요");
 		return false; //전송하지 않음
-		}//if end	
-				
+		}//if end
+	
 		return true;
 
 }//memberCheck() end
 			
-function send(){								
-	var checkID=$.cookie("checkID");								
-	if(checkID=="PASS"){
-		return true;
-	}else{
+function send(){	
+							
+		var checkID=$.cookie("checkID");								
+		if(checkID!="PASS"){
+	
 		$("#panel").css("color", "green");
 		$("#panel").text("이메일 중복확인 해주세요");
 		$("#m_mail").focus();
 		return false;
-	}//if end
+		
+		}//if end
+		
+		var checkID2=$.cookie("checkID2");
+		if(checkID2!="PASS"){
+	
+		$("#panel2").css("color", "green");
+		$("#panel2").text("닉네임 중복확인 해주세요");
+		$("#m_nick").focus();
+		return false;
+		
+		}//if end	
+	
+	return true;
+	
+}//send() end	
+
+function send(){	
+
+		var checkID2=$.cookie("checkID2");
+		if(checkID2!="PASS"){
+	
+		$("#panel2").css("color", "green");
+		$("#panel2").text("닉네임 중복확인 해주세요");
+		$("#m_nick").focus();
+		return false;
+		
+		}//if end	
+	
+	return true;
 	
 }//send() end			
 
@@ -189,3 +218,25 @@ function classCheck(){
 		}
 	}
 }//Check() end
+
+function scriptCheck(){ //후기작성 유효성 검사
+				
+  	//1)후기내용이 두글자 이상 인지?
+  		var h_postcon=document.getElementById("h_postcon").value; 
+		if(h_postcon.length<2){
+			alert("내용을 2글자 이상 입력해 주세요");
+			document.getElementById("h_postcon").focus();
+		return false; //전송하지 않음
+		}//if end
+		
+		var m_nick=document.getElementById("m_nick").value; 
+		if(m_nick.length<2){
+			alert("로그인 후 이용해 주세요");
+			document.getElementById("m_nick").focus();
+		return false; //전송하지 않음
+		}//if end
+
+
+		return true;
+	
+}//scriptCheck() end

@@ -4,9 +4,12 @@
 <%@ include file="../header.jsp"%>
 <%@ include file="../member/auth.jsp" %>
 <!--본문시작 -->
+
+ 
 <div class="container px-4 px-lg-5 mt-5">
 	<h1>클래스   <a class="btn btn-outline-success" href="javascript:logincheck();">강의 작성</a></h1>	
 	<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
 
 		<c:choose>
 			<c:when test="${empty list}">
@@ -24,13 +27,13 @@
 									<!-- Product name-->
 									<h5 class="fw-bolder">${dto.l_title}</h5>
 									<!-- Product price-->
-									${dto.l_contents}
+									쉐프 : ${dto.m_nick}
 								</div>
 							</div>
 							<!-- Product actions-->
 							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 								<div class="text-center">
-									<a class="btn btn-outline-success mt-auto" href="classread.do?l_code=${dto.l_code}">강의
+									<a class="btn btn-outline-success mt-auto" href="classread.do?l_code=${dto.l_code}&g_code=${dto.g_code}">강의
 										보기</a>
 								</div>
 
