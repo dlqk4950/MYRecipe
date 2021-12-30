@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import kr.co.recipe.member.MemberDTO;
+import kr.co.recipe.rclass.ClassDTO;
 import net.utility.DBClose;
 import net.utility.DBOpen;
 
@@ -24,12 +26,12 @@ public class cookingDAO {
 		ArrayList<cookingDTO> list = null;
 		try {
 			con = dbopen.getConnection();
-			
+
 			sql = new StringBuilder();
-			sql.append(" SELECT ts_recipe.*, ts_member.m_nick, ts_member.m_img ");
+			sql.append(" SELECT ts_recipe.*, ts_member.m_nick, ts_member.m_img, ts_postscript.h_star ");
 			sql.append(" FROM ts_recipe JOIN ts_member ");
-			sql.append(" ON ts_recipe.m_code = ts_member.m_code");		
-					
+			sql.append(" ON ts_recipe.m_code = ts_member.m_code JOIN ts_postscript ");
+			sql.append(" ON ts_recipe.r_code = ts_postscript.r_code ");
 			
 			pstmt = con.prepareStatement(sql.toString());
 			rs = pstmt.executeQuery();
@@ -44,6 +46,7 @@ public class cookingDAO {
 					dto.setM_code(rs.getString("m_code"));
 					dto.setM_nick(rs.getString("m_nick"));
 					dto.setM_img(rs.getString("m_img"));
+					dto.setH_star(rs.getInt("h_star"));
 					list.add(dto);
 				} while (rs.next());
 			}
@@ -236,7 +239,7 @@ public class cookingDAO {
 			 String m_nick = null;
 	         sql=new StringBuilder();
 	         sql.append(" INSERT INTO ts_postscript(h_code, r_code, m_code, m_img, m_nick, h_postcon, h_star, h_photo, h_date) ");
-	         sql.append(" VALUES ((select CONCAT('h_code',(SELECT nvl(max(TO_NUMBER(SUBSTR(h_code,7))),0)+1 from ts_postscript)) from ts_postscript where rownum=1), ?, ?, ?, ?, ?, ?, ?, sysdate)");
+	         sql.append(" VALUES ((select CONCAT('h_code',(SELECT nvl(max(TO_NUMBER(SUBSTR(h_code,7))),0)+1 from ts_postscript)) from ts_postscript where rownum=1), ?, ?, ?, ?, ?, sysdate)");
 	         
 	         pstmt=con.prepareStatement(sql.toString());
 	         pstmt.setString(1, r_code);
@@ -258,6 +261,41 @@ public class cookingDAO {
 
 	}//post() end
 
-	
+	public int insert(cookingDTO dto, String m_code) {
+		int cnt=0;
+		try {
+			con=dbopen.getConnection();
+			
+			sql=new StringBuilder();
+	        sql.append(" INSERT INTO ts_recipe(r_code, r_name, r_intro, r_video, r_photo, r_tip, j_no, s_no, g_no, ci_per, ci_time, ci_diff, m_code) ");
+	        sql.append(" VALUES ((select CONCAT('r_code',(SELECT nvl(max(TO_NUMBER(SUBSTR(r_code,7))),0)+1 from ts_recipe)) from ts_recipe where rownum=1), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+	        
+	        pstmt=con.prepareStatement(sql.toString());
+	        pstmt.setString(1, dto.getR_code());
+	        pstmt.setString(2, dto.getR_name());
+	        pstmt.setString(3, dto.getR_intro());
+	        pstmt.setString(4, dto.getR_video());
+	        pstmt.setString(5, dto.getR_photo());
+	        pstmt.setString(6, dto.getR_tip());
+	        pstmt.setString(7, dto.getJ_no());
+	        pstmt.setString(8, dto.getS_no());
+	        pstmt.setString(9, dto.getG_no());
+	        pstmt.setString(10, dto.getCi_per());
+	        pstmt.setString(11, dto.getCi_time());
+	        pstmt.setString(12, dto.getCi_diff());
+	        pstmt.setString(13, dto.getM_code());
 
+	        cnt=pstmt.executeUpdate();
+		}catch(Exception e) {
+			System.out.println("레시피 등록 실패" + e);
+		}finally {
+			DBClose.close(con, pstmt);
+		}
+		return cnt;
+	}
+
+	public void incrementCnt(String r_code) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -45,8 +45,9 @@ public class cookingDTO {
 			this.h_photomf = h_photomf;
 		}
 //---------------------------------------------------------------------------		
-	
-	
+
+	private MultipartFile posterMF;
+
 	public String getR_code() {
 		return r_code;
 	}
@@ -202,6 +203,14 @@ public class cookingDTO {
 	}
 	public void setR_seq(String r_seq) {
 		this.r_seq = r_seq;
-	}	
-	
+	}
+
+	public MultipartFile getPosterMF() {
+		return posterMF;
+	}
+
+	public void setPosterMF(MultipartFile posterMF) {
+		this.posterMF = posterMF;
+	}
+
 }

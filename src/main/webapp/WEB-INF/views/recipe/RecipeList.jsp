@@ -8,7 +8,7 @@
 		<h1 class="fw-bolder">레시피</h1>
 
 			<p>
-				<a class="btn btn-outline-success" href="">레시피 등록</a>
+				<a class="btn btn-outline-success" href="javascript:logincheck();">레시피 등록</a>
 			  	<a class="btn btn-outline-info" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">카테고리</a>  
 			</p>
 			<form id="Recipefrm" method="post" action="recipelist.do">
@@ -70,11 +70,6 @@
             </form>
 
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <c:choose>
-			<c:when test="${empty list}">
-    	    <p>레시피가 없습니다.</p>
-    	</c:when>
-			<c:when test="${!empty list}">
         		<c:forEach var="dto" items="${list}">
 					<div class="col mb-5">
 						<div class="card h-100">
@@ -91,20 +86,27 @@
 									<img class="rounded-circle me-3" src="../storage/${dto.m_img}" width="40px" height="40px"/>
 									<div class="small">                                
 										<div class="fw-bold">${dto.m_nick}</div>
-										
+										<div class="text-muted">${dto.h_star}</div>
 									</div>
 								</div>
 							</div>
-							<a class="btn btn-outline-success mt-auto" href="reciperead.do?r_code=${dto.r_code}&m_code=${s_m_code}">상세보기</a>
+							<a class="btn btn-outline-success mt-auto" href="reciperead.do?r_code=${dto.r_code}">상세보기</a>
 						</div>
 					</div>
 				</c:forEach>
-				</c:when>
-				</c:choose>
 			</div>
 		<br>
 	</div>
 
-	
+<script>
+function logincheck() {
+	 if (${sessionScope.s_m_mail==guest}) {            
+		 alert("로그인을 해주세요!");	        
+	    } else {	    	
+	    	location.href="insert.do";	    	
+	    }
+}
+</script>
+
 </body>
 <%@ include file="../footer.jsp" %>

@@ -178,7 +178,7 @@ public class ClassDAO {
 				con = dbOpen.getConnection();
 
 				sql = new StringBuilder();
-				sql.append("select pay.*, mem.m_nick, mem.m_mail, mem.m_img from ts_pay pay join ts_member mem on pay.g_code = mem.m_code where pay.m_code = ? and TO_CHAR(SYSDATE, 'MM/dd') >= TO_CHAR(p_date, 'MM/dd')");
+				sql.append("select pay.*, mem.m_nick, mem.m_mail, mem.m_img from ts_pay pay join ts_member mem on pay.g_code = mem.m_code where pay.m_code = ? and TO_CHAR(SYSDATE) >= TO_CHAR(p_date)");
 
 				pstmt = con.prepareStatement(sql.toString());
 				pstmt.setString(1, m_code);
@@ -213,7 +213,7 @@ public class ClassDAO {
 				con = dbOpen.getConnection();
 
 				sql = new StringBuilder();
-				sql.append("select pay.*, mem.m_nick, mem.m_mail, mem.m_img from ts_pay pay join ts_member mem on pay.g_code = mem.m_code where pay.m_code = ? and TO_CHAR(SYSDATE, 'MM/dd') <= TO_CHAR(p_date, 'MM/dd')");
+				sql.append("select pay.*, mem.m_nick, mem.m_mail, mem.m_img from ts_pay pay join ts_member mem on pay.g_code = mem.m_code where pay.m_code = ? and TO_CHAR(SYSDATE) <= TO_CHAR(p_date)");
 
 				pstmt = con.prepareStatement(sql.toString());
 				pstmt.setString(1, m_code);
@@ -248,7 +248,7 @@ public class ClassDAO {
 				con = dbOpen.getConnection();
 				sql = new StringBuilder();
 				
-				sql.append("select p_code, p_div from ts_pay where g_code = ? and m_code = ? and TO_CHAR(SYSDATE, 'MM/dd') >= TO_CHAR(p_date, 'MM/dd')");
+				sql.append("select p_code, p_div from ts_pay where g_code = ? and m_code = ? and TO_CHAR(SYSDATE) >= TO_CHAR(p_date)");
 				pstmt = con.prepareStatement(sql.toString());
 				pstmt.setString(1, g_code);
 				pstmt.setString(2, m_code);
